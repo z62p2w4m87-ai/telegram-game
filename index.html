@@ -1,4 +1,4 @@
-<!DOCTYPE html><!-- v25 look branch -->
+<!DOCTYPE html><!-- v26 touch chest -->
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -133,7 +133,7 @@
       ]},
       hot: { img: "dressstock", text: "Хорошо. Теперь можно иначе. Скажи, как.", choices: [
         { t: "На кровать", next: "bed", pts: 2 },
-        { t: "Покажи трусики и чулки", next: "panties", pts: 2 },
+        { t: "Погладь грудь", next: "touch_chest", pts: 3 },
         { t: "Сними платье с груди", next: "strap", pts: 3 }
       ]},
       panties: { img: "panty", text: "Красные трусики на месте. Выше — кружево чулок. Не снимаю, пока не скажешь.", choices: [
@@ -147,7 +147,7 @@
         { t: "Замри так", next: "freeze", pts: 2 }
       ]},
       strap: { img: "full1", text: "Сняла. Грудь открыта. Ткань на бёдрах. Смотрю на тебя.", choices: [
-        { t: "Покажи трусики", next: "panties", pts: 2 },
+        { t: "Погладь грудь", next: "touch_chest", pts: 3 },
         { t: "Сними трусики", next: "bare", pts: 3 },
         { t: "Положи голову", next: "lap", pts: 3 }
       ]},
@@ -179,6 +179,16 @@
       freeze: { img: "top1", text: "Замерла. Жду команду.", choices: [
         { t: "Можно говорить", next: "whisper", pts: 2 },
         { t: "Дальше", next: "hot", pts: 2 },
+        { t: "Умница", next: "good", pts: 3 }
+      ]},
+      touch_chest: { img: "full1", text: "Ладонь на груди. Медленно. Смотрю на тебя и не убираю руку.", choices: [
+        { t: "Ещё", next: "touch_chest2", pts: 3 },
+        { t: "Сними трусики", next: "bare", pts: 3 },
+        { t: "Положи голову", next: "lap", pts: 3 }
+      ]},
+      touch_chest2: { img: "full1", text: "Не прячусь. Дышу чаще. Можно дальше — если скажешь.", choices: [
+        { t: "На кровать", next: "bed", pts: 3 },
+        { t: "На колени так", next: "kneel2", pts: 3 },
         { t: "Умница", next: "good", pts: 3 }
       ]},
       look: { img: "glam", text: "Нравится. Смотри сколько хочешь. Я не прячусь.", choices: [
@@ -352,7 +362,7 @@
     if (window.speechSynthesis) {
       speechSynthesis.onvoiceschanged = pickVoice;
     }
-    const VOICE_ALIAS = { soft_start: "start", common_rules: "rules", m_rules: "m_start", m_stand: "m_listen", m_approach: "m_listen", m_turn: "m_listen", m_kneel: "m_listen", m_touch: "m_listen", m_silent: "m_listen", m_wait: "m_listen", m_check: "m_listen", m_again: "m_listen", m_low: "m_listen", m_whip: "m_good", m_harsh: "m_good", m_punish: "m_good", m_praise: "m_good", m_release: "m_end", look: "pose", look_more: "hello", m_look: "m_listen", m_look_more: "m_good" };
+    const VOICE_ALIAS = { soft_start: "start", common_rules: "rules", m_rules: "m_start", m_stand: "m_listen", m_approach: "m_listen", m_turn: "m_listen", m_kneel: "m_listen", m_touch: "m_listen", m_silent: "m_listen", m_wait: "m_listen", m_check: "m_listen", m_again: "m_listen", m_low: "m_listen", m_whip: "m_good", m_harsh: "m_good", m_punish: "m_good", m_praise: "m_good", m_release: "m_end", look: "pose", look_more: "hello", m_look: "m_listen", m_look_more: "m_good", touch_chest: "strap", touch_chest2: "whisper" };
     function speakText(text) {
       if (!window.speechSynthesis || !text) return;
       speechSynthesis.cancel();
@@ -382,7 +392,7 @@
     }
 
     let phase = "soft";
-    const HOT = new Set(["hot","bed","panties","stockings","strap","bare","kneel2","lap","whisper","freeze"]);
+    const HOT = new Set(["hot","bed","panties","stockings","strap","bare","kneel2","lap","whisper","freeze","touch_chest","touch_chest2"]);
 
     function show(id) {
       if (!scenes[id]) id = "start";
