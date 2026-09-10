@@ -11,7 +11,8 @@
     .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
     .name { font-weight: 800; }
     .stat { color: #ffb7c8; font-size: 13px; }
-    .photo { width: 100%; height: 38vh; object-fit: cover; object-position: top; border-radius: 22px; margin-bottom: 10px; border: 1px solid rgba(255,180,200,.18); background: #2a1018; }
+    .photo { width: 100%; height: 52vh; object-fit: cover; object-position: center 18%; border-radius: 22px; margin-bottom: 10px; border: 1px solid rgba(255,180,200,.18); background: #2a1018; }
+    .photo.full { object-position: center 42%; object-fit: cover; }
     .card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,180,200,.18); border-radius: 22px; padding: 16px; flex: 1; }
     .who { color: #ff8aa8; font-size: 12px; text-transform: uppercase; letter-spacing: .12em; margin: 0 0 8px; }
     .line { font-size: 18px; line-height: 1.35; margin: 0 0 8px; }
@@ -60,7 +61,7 @@
         { t: "На кровать", next: "bed", pts: 1 },
         { t: "Похвали себя", next: "praise", pts: 1 }
       ]},
-      pose: { img: "top3", text: "Вот так? Платье, чулки до бедра, взгляд — всё для тебя.", choices: [
+      pose: { img: "full2", text: "Вот так? Платье, чулки до бедра, взгляд — всё для тебя.", choices: [
         { t: "Ближе", next: "hello", pts: 1 },
         { t: "На колени в этом", next: "kneel", pts: 2 }
       ]},
@@ -88,7 +89,7 @@
         { t: "Сними платье с груди", next: "strap", pts: 3 },
         { t: "Замри так", next: "freeze", pts: 2 }
       ]},
-      praise: { img: "top2", text: "Я послушная. Я красивая. И я твоя, пока ты этого хочешь. Можно награду?", choices: [
+      praise: { img: "full3", text: "Я послушная. Я красивая. И я твоя, пока ты этого хочешь. Можно награду?", choices: [
         { t: "Награда — ближе", next: "closer", pts: 2 },
         { t: "Награда — на кровать", next: "bed", pts: 2 },
         { t: "Сначала на колени", next: "kneel", pts: 1 }
@@ -107,11 +108,11 @@
         { t: "Шепчи", next: "whisper", pts: 3 },
         { t: "Молчи и дыши", next: "freeze", pts: 2 }
       ]},
-      whisper: { img: "top2", text: "Тихо: «я здесь. я слушаю. я не уйду, пока не скажешь».", choices: [
+      whisper: { img: "full1", text: "Тихо: «я здесь. я слушаю. я не уйду, пока не скажешь».", choices: [
         { t: "Умница. Ещё", next: "good", pts: 3 },
         { t: "Покажись снова", next: "pose", pts: 2 }
       ]},
-      freeze: { img: "top3", text: "Стоя. Даже ресницы почти не двигаются. Жду команду.", choices: [
+      freeze: { img: "full2", text: "Стоя. Даже ресницы почти не двигаются. Жду команду.", choices: [
         { t: "Улыбнись", next: "good", pts: 3 },
         { t: "Можно говорить", next: "whisper", pts: 2 },
         { t: "На кровать", next: "bed", pts: 2 }
@@ -185,6 +186,7 @@
       const s = scenes[id];
       line.textContent = s.text;
       photo.src = IMAGES[s.img];
+      photo.classList.toggle("full", ["full1","full2","full3","kneel","bed","top1","top2","top3"].includes(s.img));
       speak(s.text);
       box.innerHTML = "";
       s.choices.forEach((c) => {
