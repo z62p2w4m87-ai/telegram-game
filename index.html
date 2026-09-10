@@ -1,4 +1,4 @@
-<!DOCTYPE html><!-- v27 one file voices + mistress -->
+<!DOCTYPE html><!-- v29 one voice only -->
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -375,16 +375,12 @@
       if (voicePlayer) { try { voicePlayer.pause(); voicePlayer.src = ""; } catch(e) {} voicePlayer = null; }
       if (window.speechSynthesis) speechSynthesis.cancel();
       if (!voiceOn) return;
-      const text = (scenes[id] && scenes[id].text) || "";
       const src = VOICES[id] || VOICES[VOICE_ALIAS[id]];
-      if (!src) { speakText(text); return; }
+      if (!src) return;
       const a = new Audio(src);
       a.preload = "auto";
       voicePlayer = a;
-      const fail = () => speakText(text);
-      a.onerror = fail;
-      const p = a.play();
-      if (p && p.catch) p.catch(fail);
+      a.play().catch(function(){});
     }
 
     let phase = "soft";
