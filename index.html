@@ -1,4 +1,4 @@
-<!DOCTYPE html><!-- v7 panty bare -->
+<!DOCTYPE html><!-- v8 start then hot -->
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -52,37 +52,42 @@
     };
 
     const scenes = {
-      start: { img: "full3", text: "Я здесь. Красное платье, чулки. Скажи, чего хочешь — сделаю.", choices: [
+      start: { img: "cover", text: "Я здесь. Красное платье, чулки. Скажи, чего хочешь — сделаю.", choices: [
         { t: "Подойди", next: "hello", pts: 1 },
-        { t: "Повернись", next: "pose", pts: 1 },
-        { t: "Сначала правила", next: "rules", pts: 0 },
-        { t: "Сразу на кровать", next: "bed", pts: 1 }
+        { t: "Повернись красиво", next: "pose", pts: 1 },
+        { t: "Сначала правила", next: "rules", pts: 0 }
       ]},
-      hello: { img: "full2", text: "Подошла. Чулки тихо шуршат. Смотрю только на тебя.", choices: [
-        { t: "На колени", next: "kneel", pts: 1 },
-        { t: "На кровать", next: "bed", pts: 1 },
+      hello: { img: "smile", text: "Подошла. Чулки тихо шуршат. Смотрю только на тебя.", choices: [
+        { t: "На колени", next: "kneel_soft", pts: 1 },
         { t: "Похвали себя", next: "praise", pts: 1 },
         { t: "Постой так", next: "wait", pts: 1 }
       ]},
-      pose: { img: "full2", text: "Обернулась. Платье, чулки до бедра, спина, взгляд через плечо.", choices: [
-        { t: "Ближе", next: "hello", pts: 1 },
-        { t: "На колени в этом", next: "kneel", pts: 2 },
-        { t: "Иди к кровати", next: "bed", pts: 1 }
+      pose: { img: "glam", text: "Обернулась. Платье, чулки, взгляд через плечо. Всё ещё в одежде.", choices: [
+        { t: "Подойди ближе", next: "hello", pts: 1 },
+        { t: "На колени в этом", next: "kneel_soft", pts: 2 }
       ]},
-      rules: { img: "full3", text: "Ты говоришь — я слушаю. «Стоп» — всё сразу кончается. Если молчишь, я жду.", choices: [
+      rules: { img: "stand", text: "Ты говоришь — я слушаю. «Стоп» — всё сразу кончается. Если молчишь, я жду.", choices: [
         { t: "Понял. Подойди", next: "hello", pts: 1 },
         { t: "Покажись", next: "pose", pts: 1 }
       ]},
-      wait: { img: "full2", text: "Стою. Не дёргаюсь. Могу так долго.", choices: [
-        { t: "Иди ближе", next: "closer", pts: 2 },
-        { t: "На колени", next: "kneel", pts: 1 },
-        { t: "Можно двигаться", next: "hello", pts: 0 }
+      wait: { img: "stand", text: "Стою. Не дёргаюсь. Ещё в платье. Могу так долго.", choices: [
+        { t: "Можно двигаться", next: "hello", pts: 0 },
+        { t: "На колени", next: "kneel_soft", pts: 1 },
+        { t: "Теперь ближе", next: "closer", pts: 2 }
       ]},
-      kneel: { img: "panty", text: "Уже. Смотрю снизу вверх. Короткая ткань, красные трусики, чулки с кружевом.", choices: [
+      praise: { img: "smile", text: "Я послушная. Я красивая. И я твоя, пока ты этого хочешь. Можно награду?", choices: [
+        { t: "Сначала на колени", next: "kneel_soft", pts: 1 },
+        { t: "Награда — ближе", next: "closer", pts: 2 }
+      ]},
+      kneel_soft: { img: "kneel", text: "Уже на коленях. Платье ещё на мне. Смотрю снизу вверх.", choices: [
+        { t: "Останься так", next: "wait", pts: 1 },
         { t: "Ближе", next: "closer", pts: 2 },
-        { t: "Покажи чулки и трусики", next: "panties", pts: 2 },
+        { t: "Дальше", next: "hot", pts: 2 }
+      ]},
+      hot: { img: "full3", text: "Хорошо. Теперь можно иначе. Скажи, как.", choices: [
         { t: "На кровать", next: "bed", pts: 2 },
-        { t: "Замри", next: "freeze", pts: 2 }
+        { t: "Покажи трусики и чулки", next: "panties", pts: 2 },
+        { t: "Сними платье с груди", next: "strap", pts: 3 }
       ]},
       panties: { img: "panty", text: "Красные трусики на месте, тонкие. Выше — кружево чулок. Не снимаю, пока не скажешь.", choices: [
         { t: "Оставь. Иди ближе", next: "closer", pts: 2 },
@@ -97,39 +102,31 @@
       bed: { img: "full3", text: "На кровати. Трусики и полоска чулка. Могу наклониться. Могу ждать.", choices: [
         { t: "Погладь чулок", next: "stockings", pts: 2 },
         { t: "Сними платье с груди", next: "strap", pts: 3 },
-        { t: "Положи голову", next: "lap", pts: 2 },
-        { t: "Позови ближе", next: "closer", pts: 2 }
+        { t: "Положи голову", next: "lap", pts: 2 }
       ]},
-      stockings: { img: "full2", text: "Ладонь на бедре. Чулок гладкий, резинка чуть кусается. Выше — только если разрешишь.", choices: [
-        { t: "Выше, к кружеву", next: "panties", pts: 2 },
+      stockings: { img: "panty", text: "Ладонь на бедре. Чулок гладкий, резинка чуть кусается. Выше — только если разрешишь.", choices: [
+        { t: "Покажи трусики", next: "panties", pts: 2 },
         { t: "Сними платье с груди", next: "strap", pts: 3 },
         { t: "Замри так", next: "freeze", pts: 2 }
-      ]},
-      praise: { img: "full3", text: "Я послушная. Я красивая. И я твоя, пока ты этого хочешь. Можно награду?", choices: [
-        { t: "Награда — ближе", next: "closer", pts: 2 },
-        { t: "Награда — на кровать", next: "bed", pts: 2 },
-        { t: "Сначала на колени", next: "kneel", pts: 1 }
       ]},
       closer: { img: "full2", text: "Так близко, что слышу дыхание. Платье уже не закрывает грудь.", choices: [
         { t: "Сними совсем", next: "strap", pts: 3 },
         { t: "Положи голову мне", next: "lap", pts: 2 },
-        { t: "Скажи, что слушаешь", next: "whisper", pts: 2 },
-        { t: "Улыбнись", next: "good", pts: 2 }
+        { t: "Скажи, что слушаешь", next: "whisper", pts: 2 }
       ]},
       strap: { img: "full1", text: "Сняла. Грудь открыта. Ткань только на бёдрах. Смотрю на тебя.", choices: [
-        { t: "Умница", next: "good", pts: 3 },
-        { t: "Ещё ближе", next: "whisper", pts: 3 },
-        { t: "На колени так", next: "kneel2", pts: 3 },
-        { t: "Замри так", next: "freeze", pts: 2 }
+        { t: "Покажи трусики", next: "panties", pts: 2 },
+        { t: "Сними трусики", next: "bare", pts: 3 },
+        { t: "Ещё ближе", next: "whisper", pts: 3 }
       ]},
-      kneel2: { img: "bareimg", text: "Снова на коленях. Грудь открыта, чулки на месте. Жду.", choices: [
+      kneel2: { img: "bareimg", text: "Снова на коленях. Только чулки. Жду.", choices: [
         { t: "Положи голову", next: "lap", pts: 3 },
         { t: "Шепчи", next: "whisper", pts: 3 },
         { t: "Умница", next: "good", pts: 3 }
       ]},
-      look: { img: "full3", text: "Не отвожу глаз. Можешь смотреть сколько хочешь.", choices: [
+      look: { img: "smile", text: "Не отвожу глаз. Можешь смотреть сколько хочешь.", choices: [
         { t: "Ближе", next: "closer", pts: 2 },
-        { t: "На кровать", next: "bed", pts: 2 }
+        { t: "Дальше", next: "hot", pts: 2 }
       ]},
       lap: { img: "full3", text: "Тепло. Могу молчать. Могу шептать. Выбери.", choices: [
         { t: "Шепчи", next: "whisper", pts: 3 },
@@ -141,22 +138,20 @@
         { t: "Покажись снова", next: "pose", pts: 2 },
         { t: "Ещё раз на колени", next: "kneel2", pts: 2 }
       ]},
-      freeze: { img: "full2", text: "Стоя. Даже ресницы почти не двигаются. Жду команду.", choices: [
+      freeze: { img: "stand", text: "Стоя. Даже ресницы почти не двигаются. Жду команду.", choices: [
         { t: "Улыбнись", next: "good", pts: 3 },
         { t: "Можно говорить", next: "whisper", pts: 2 },
-        { t: "На кровать", next: "bed", pts: 2 },
-        { t: "Можно двигаться", next: "hello", pts: 1 }
+        { t: "Дальше", next: "hot", pts: 2 }
       ]},
-      good: { img: "full2", text: "Умница — лучше слышать это от тебя. Ещё раунд или хватит?", choices: [
+      good: { img: "smile", text: "Умница — лучше слышать это от тебя. Ещё раунд или хватит?", choices: [
         { t: "Ещё раунд", next: "start", pts: 0 },
-        { t: "Ещё раз на кровать", next: "bed", pts: 1 },
-        { t: "Стой и жди", next: "wait", pts: 1 },
+        { t: "Сразу дальше", next: "hot", pts: 1 },
         { t: "Хватит на сегодня", next: "end", pts: 0 }
       ]},
-      end: { img: "full3", text: "Раунд кончен. Я не ушла — жду, когда снова скажешь «начни».", choices: [
+      end: { img: "cover", text: "Раунд кончен. Я не ушла — жду, когда снова скажешь «начни».", choices: [
         { t: "Начать заново", next: "start", pts: 0 }
       ]},
-      stop: { img: "full2", text: "Сразу остановилась. Воды? Пледа? Или просто помолчим.", choices: [
+      stop: { img: "stand", text: "Сразу остановилась. Воды? Пледа? Или просто помолчим.", choices: [
         { t: "Вернуться в начало", next: "start", pts: 0 }
       ]}
     };
